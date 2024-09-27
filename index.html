@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFS Help Center</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .menu {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #111;
+            padding-top: 60px;
+            transition: 0.3s;
+        }
+        .menu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+        }
+        .menu a:hover {
+            background-color: #575757;
+        }
+        .open-menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px;
+        }
+        .content {
+            margin-left: 0;
+            transition: margin-left 0.3s;
+            padding: 20px;
+        }
+        .container {
+            margin: 0;
+            padding: 20px;
+        }
+        .menu-btn {
+            padding: 5px 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .menu-btn:hover {
+            background-color: #e74c3c;
+        }
+        .hide-menu {
+            left: 0;
+        }
+        .show-menu {
+            margin-left: 250px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="open-menu-btn" onclick="toggleMenu()">&#9776;</span>
+        <h1>TFS Help Center</h1>
+    </header>
+
+    <div class="menu" id="sideMenu">
+        <button onclick="toggleMenu()" class="menu-btn">Close Menu</button>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('help')">Help</a>
+        <a href="#" onclick="showPage('faq')">FAQ</a>
+        <a href="#" onclick="showPage('resources')">Resources</a>
+    </div>
+
+    <div class="content" id="mainContent">
+        <div class="container" id="home">
+            <h2>Welcome to the TFS Help Center</h2>
+            <p>Your one-stop resource for assistance with TFS OS.</p>
+            <p>Dowmload TFS OS from <a href="https://tfsos.github.io/Tfsosweb/">Tfs Os Website</a></p>
+            <p>Our Official Website: <a href="https://tfsos.github.io/tfsorg/">Tfs official Website</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 TFS Help Center</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('sideMenu').classList.toggle('hide-menu');
+            document.getElementById('mainContent').classList.toggle('show-menu');
+        }
+
+        function showPage(page) {
+            let content = document.getElementById('mainContent');
+            if (page === 'home') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>Welcome to the TFS Help Center</h2>
+                        <p>Your one-stop resource for assistance with TFS OS.</p>
+                    </div>
+                `;
+            } else if (page === 'help') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>Help</h2>
+                        <p>For any technical issues or inquiries, please reach out to our support team.</p>
+                    </div>
+                `;
+            } else if (page === 'faq') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>Frequently Asked Questions (FAQ)</h2>
+                        <h3>Q1: What is TFS OS?</h3>
+                        <p>A: TFS OS is a custom operating system designed for specific applications.</p>
+                        <h3>Q2: How can I install TFS OS?</h3>
+                        <p>A: You can download the installation package from our website and follow the instructions provided.</p>
+                    </div>
+                `;
+            } else if (page === 'resources') {
+                content.innerHTML = `
+                    <div class="container">
+                        <h2>Resources</h2>
+                        <p>Access our documentation, guides, and tutorials to help you get started with TFS OS.</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+
+</body>
+</html>
+
